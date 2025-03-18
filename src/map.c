@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:11:15 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/18 23:24:28 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/19 00:24:58 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ t_map		*parse_map(char *map_name);
 void		fill_map(t_map *new_map, int fd);
 
 int			check_map_validity(t_map *map);
-static int	valid_borders(t_map *map);
-static int	map_is_rectangular(t_map *map);
 
 void		free_map(t_map *map);
 
@@ -72,24 +70,27 @@ t_map	*parse_map(char *map_name)
 	return (new_map);
 }
 
-static void	fill_map(t_map *map, int fd)
+void	fill_map(t_map *map, int fd)
 {
 	int		i;
 	char	*line;
-
+//TODO
+//DEBUG
 	i = 0;
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
+		if (map->width == 0)
+			map->width = (int)ft_strlen(line);
 		map->height++;
 		map->grid = ft_realloc(map->grid, sizeof(char *) * (map->height + 1));
 		map->grid[i] = line;
 		i++;
+		free(line);
 		line = get_next_line(fd);
 	}
 	map->grid[i] = NULL;
 	close(fd);
-	map->width = (int)ft_strlen(map->grid[0]);
 }
 
 void	free_map(t_map *map)

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 20:14:59 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/18 23:38:37 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/19 00:24:05 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int	map_is_rectangular(t_map *map);
 
 int	check_map_validity(t_map *map)
 {
+	if (!map)
+		return (0);
 	if (!map_is_rectangular(map) || !valid_borders(map) || valid_elements(map))
 		return (0);
 	return (1);
@@ -56,7 +58,7 @@ static int	map_is_rectangular(t_map *map)
 	y = 0;
 	while (y < map->height)
 	{
-		if (ft_strlen(map->grid[y]) != map->width)
+		if ((int)ft_strlen(map->grid[y]) != map->width)
 			return (display_error(INVALID_MAP_1), 0);
 		y++;
 	}

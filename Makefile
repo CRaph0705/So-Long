@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 17:53:43 by rcochran          #+#    #+#              #
-#    Updated: 2025/03/18 16:50:30 by rcochran         ###   ########.fr        #
+#    Updated: 2025/03/19 00:10:02 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,16 @@ LIBFT		=	$(LIBFT_PATH)/libft.a
 INCLUDES	= -I$(LIBFT_PATH)/includes -I ./includes
 # BINCLUDES	=	-I ./bonus
 
-FILES		= 	
+FILES		= 	actions \
+				display \
+				error \
+				exit \
+				keybind \
+				map_validity \
+				map \
+				moves \
+				pathfinding \
+				start
 
 MAIN		=	main.c
 # BMAIN		=	main_bonus.c

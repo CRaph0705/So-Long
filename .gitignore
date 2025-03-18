@@ -1,0 +1,10 @@
+/.vscode
+.DS_Store
+
+/obj
+so_long
+
+/libft/obj
+/libft/libft.a
+
+/*.txt

@@ -1,9 +1,9 @@
 Découpe du projet :
 
-I- Parsing
-
 les fichiers .ber
 https://www.bien-programmer.fr/ber/ber.htm
+
+I- Parsing
 
 1) lire et stocker une map
 2) vérifier la validité de cette map (conditions format, présence joueur, bordures, sortie)
@@ -34,3 +34,7 @@ VI- Bonus
 2) combat? armes?
 3) sons ? (tir, ramassage, victoire/défaite du PJ)
 4) animations ?
+5) génération de map ?
+
+assets :
+- https://sethbb.itch.io/32rogues

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/18 17:32:42 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:39:51 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define PARSE_ERROR_1 "parse_map() : Error opening file.\n"
 # define PARSE_ERROR_2 "parse_map() : Error on t_map malloc.\n"
 # define PARSE_ERROR_3 "parse_map() : Invalid map.\n"
+# define INVALID_MAP_1 "check_map_validity() : Invalid map. Map not rectangle\n"
 
 typedef struct s_map
 {
@@ -39,5 +40,8 @@ int		check_map_validity(t_map *map);
 
 /* free map */
 void	free_map(t_map *map);
+
+/* ERROR HANDLING */
+void	display_error(char *msg);
 
 #endif

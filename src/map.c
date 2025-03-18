@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:11:15 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/18 17:45:34 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:16:57 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ and return "Error\n" followed by an
 TODO explicit error message
 of your choice. */
 
-t_map	*parse_map(char *map_name);
-int		check_map_validity(t_map *map);
-void	free_map(t_map *map);
+t_map		*parse_map(char *map_name);
+void		fill_map(t_map *new_map, int fd);
 
-int		check_borders(char **map_array);
-void	fill_map(t_map *new_map, int fd);
+int			check_map_validity(t_map *map);
+static int	valid_borders(t_map *map);
+static int	map_is_rectangular(t_map *map);
+
+void		free_map(t_map *map);
 
 t_map	*parse_map(char *map_name)
 {
@@ -90,12 +92,4 @@ static void	fill_map(t_map *map, int fd)
 	map->width = (int)ft_strlen(map->grid[0]);
 }
 
-static int	check_borders(char **map_array)
-{
-	int	i;
-	int	j;
 
-	i = 0;
-	j = 0;
-	return (1);
-}

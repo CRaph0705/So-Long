@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:49:13 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/17 18:49:44 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:07:28 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	get_collectible(void);
 
+/* TODO */
 void	get_collectible(void)
 {
 	return ;

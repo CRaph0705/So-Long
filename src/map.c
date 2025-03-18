@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:11:15 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/18 20:16:57 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/18 23:23:48 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,3 +93,16 @@ static void	fill_map(t_map *map, int fd)
 }
 
 
+void		free_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->height)
+	{
+		free(map->grid[i]);
+		i++;
+	}
+	free(map->grid);
+	free(map);
+}

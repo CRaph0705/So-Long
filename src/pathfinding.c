@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 23:40:48 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/19 18:27:16 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:44:06 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static int	is_filled(t_map *map);
 
 static void	flood_fill(t_map *map, int x, int y)
 {
+	if (x < 0 || x >= map->width || y < 0 || y >= map->height)
+		return ;
 	if (map->grid[y][x] == '1' || map->grid[y][x] == 'F')
 		return ;
 	map->grid[y][x] = 'F';
@@ -62,22 +64,26 @@ static void	flood_fill(t_map *map, int x, int y)
 	flood_fill(map, x, y - 1);
 }
 
+// TODO debug segfault
 static t_map	*dup_map(t_map *map)
 {
 	t_map	*new_map;
 	int		i;
+	int		map_h;
 
+	map_h = map->height;
 	new_map = malloc(sizeof(t_map));
 	if (!new_map)
 		return (NULL);
 	i = 0;
-	while (i < map->height)
+	while (i < map_h)
 	{
+		new_map->grid = ft_realloc(new_map->grid, sizeof(char *) * map_h);
 		new_map->grid[i] = strdup(map->grid[i]);
 		i++;
 	}
 	new_map->grid[i] = NULL;
-	new_map->height = map->height;
+	new_map->height = map_h;
 	new_map->width = map->width;
 	return (new_map);
 }

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:12:40 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/19 17:17:40 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:55:24 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	count_other_elements(t_map *map, int *other_count)
 		while (x < map->width)
 		{
 			if (!is_valid_char(map->grid[y][x]))
+			{
 				(*other_count)++;
+				return ;
+			}
 			x++;
 		}
 		y++;

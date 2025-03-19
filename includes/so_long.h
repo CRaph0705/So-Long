@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/19 17:22:47 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:27:09 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,23 @@
 # define PARSE_ERROR_1 "parse_map() : Error opening file.\n"
 # define PARSE_ERROR_2 "parse_map() : Error on t_map malloc.\n"
 # define PARSE_ERROR_3 "parse_map() : Invalid map.\n"
-# define INVALID_MAP_1 "check_map_validity() : Invalid map : not rectangle.\n"
 # define INVALID_BORDERS "Error: Map must be surrounded by walls.\n"
 # define INVALID_ELEM_1 "Error: Invalid number of P, E, or C.\n"
 # define INVALID_ELEM_2 "Error: Invalid char found.\n"
 # define EMPTY_MAP_FILE "Error: Empty map file.\n"
-# define INVALID_MAP_2 "Error : no valid path found.\n"
+# define INVALID_MAP_1 "check_map_validity() : Invalid map : not rectangle.\n"
+# define INVALID_MAP_2 "Error: No valid path to exit or collectibles.\n"
+# define INVALID_MAP_3 "valid_path() : Error on t_map malloc.\n"
 
+/* 	
+{	
+	char	**grid;
+	int		width;
+	int		height;
+	int		player_pos_x;
+	int		player_pos_y; 
+} t_map
+*/
 typedef struct s_map
 {
 	char	**grid;

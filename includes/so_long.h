@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/19 00:04:49 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:50:01 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 # define PARSE_ERROR_1 "parse_map() : Error opening file.\n"
 # define PARSE_ERROR_2 "parse_map() : Error on t_map malloc.\n"
 # define PARSE_ERROR_3 "parse_map() : Invalid map.\n"
-# define INVALID_MAP_1 "check_map_validity() : Invalid map. Map not rectangle\n"
+# define INVALID_MAP_1 "check_map_validity() : Invalid map : not rectangle.\n"
+# define INVALID_BORDERS "Error: Map must be surrounded by walls.\n"
+# define INVALID_ELEM_1 "Error: Invalid number of P, E, or C.\n"
+# define INVALID_ELEM_2 "Error: Invalid char found.\n"
+# define EMPTY_MAP_FILE "Error: Empty map file.\n"
 
 typedef struct s_map
 {

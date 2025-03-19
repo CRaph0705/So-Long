@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:11:15 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/19 00:24:58 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:32:38 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,17 @@ int			check_map_validity(t_map *map);
 
 void		free_map(t_map *map);
 
+t_map		*init_map(char *map_name);
+
+t_map	*init_map(char *map_name)
+{
+	t_map	*map;
+
+	(void)map_name;
+	map = NULL;
+	return (map);
+}
+
 t_map	*parse_map(char *map_name)
 {
 	t_map	*new_map;
@@ -74,19 +85,27 @@ void	fill_map(t_map *map, int fd)
 {
 	int		i;
 	char	*line;
-//TODO
-//DEBUG
+
 	i = 0;
 	line = get_next_line(fd);
-	while (line != NULL)
+	if (!line)
 	{
-		if (map->width == 0)
+		(close(fd), display_error(EMPTY_MAP_FILE));
+		return ;
+	}
+;	while (line != NULL)
+	{
+		if (map->height == 0)
+		{
 			map->width = (int)ft_strlen(line);
-		map->height++;
-		map->grid = ft_realloc(map->grid, sizeof(char *) * (map->height + 1));
-		map->grid[i] = line;
-		i++;
+			if(line[map->width - 1] == '\n')
+				map->width--;
+		}
+		map->grid = ft_realloc(map->grid, sizeof(char *) * (map->height + 2));
+		map->grid[i] = ft_strtrim(line, "\n");
 		free(line);
+		i++;
+		map->height++;
 		line = get_next_line(fd);
 	}
 	map->grid[i] = NULL;

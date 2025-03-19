@@ -6,24 +6,24 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 20:14:59 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/19 00:24:05 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:11:28 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#define INVALID_BORDERS "Error: Map must be surrounded by walls\n"
-#define INVALID_ELEM "Error: Invalid number of P, E, or C\n"
 
 int			check_map_validity(t_map *map);
 static int	valid_borders(t_map *map);
 static int	valid_elements(t_map *map);
 static int	map_is_rectangular(t_map *map);
+static void	count_elements(t_map *map, int *player_count,
+				int *exit_count, int *collectible_count);
 
 int	check_map_validity(t_map *map)
 {
 	if (!map)
 		return (0);
-	if (!map_is_rectangular(map) || !valid_borders(map) || valid_elements(map))
+	if (!map_is_rectangular(map) || !valid_borders(map) || !valid_elements(map))
 		return (0);
 	return (1);
 }
@@ -35,9 +35,9 @@ static int	valid_borders(t_map *map)
 	char	c;
 
 	y = 0;
-	x = 0;
 	while (y < map->height)
 	{
+		x = 0;
 		while (x < map->width)
 		{
 			c = map->grid[y][x];
@@ -54,11 +54,13 @@ static int	valid_borders(t_map *map)
 static int	map_is_rectangular(t_map *map)
 {
 	int	y;
+	int	length;
 
 	y = 0;
-	while (y < map->height)
+	length = ft_strlen(map->grid[y]);
+	while (map->grid[y] != NULL)
 	{
-		if ((int)ft_strlen(map->grid[y]) != map->width)
+		if ((int)ft_strlen(map->grid[y]) != length)
 			return (display_error(INVALID_MAP_1), 0);
 		y++;
 	}
@@ -72,10 +74,10 @@ static void	count_elements(t_map *map, int *player_count,
 	int	x;
 
 	y = 0;
-	while (y < map->height)
+	while (y++ < map->height)
 	{
 		x = 0;
-		while (x < map->width)
+		while (x++ < map->width)
 		{
 			if (map->grid[y][x] == 'P')
 			{
@@ -87,9 +89,12 @@ static void	count_elements(t_map *map, int *player_count,
 				(*exit_count)++;
 			else if (map->grid[y][x] == 'C')
 				(*collectible_count)++;
-			x++;
+			else if (map->grid[y][x] != '1' && map->grid[y][x] != '0')
+			{
+				(*exit_count) = -1;
+				return ;
+			}
 		}
-		y++;
 	}
 }
 
@@ -103,7 +108,9 @@ static int	valid_elements(t_map *map)
 	exit_count = 0;
 	collectible_count = 0;
 	count_elements(map, &player_count, &exit_count, &collectible_count);
-	if (player_count != 1 || exit_count == 0 || collectible_count == 0)
-		return (display_error(INVALID_ELEM), 0);
+	if (player_count != 1 || exit_count != 1 || collectible_count == 0)
+		return (display_error(INVALID_ELEM_1), 0);
+	if (exit_count == -1)
+		return (display_error(INVALID_ELEM_2), 0);
 	return (1);
 }

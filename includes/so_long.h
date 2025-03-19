@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/19 15:50:01 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:18:43 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define INVALID_ELEM_1 "Error: Invalid number of P, E, or C.\n"
 # define INVALID_ELEM_2 "Error: Invalid char found.\n"
 # define EMPTY_MAP_FILE "Error: Empty map file.\n"
+# define INVALID_MAP_2 "Error : no valid path found.\n"
 
 typedef struct s_map
 {
@@ -41,6 +42,7 @@ t_map	*parse_map(char *map_name);
 
 /* returns if map is valid */
 int		check_map_validity(t_map *map);
+int		valid_path(t_map *map);
 
 /* free map */
 void	free_map(t_map *map);
@@ -51,5 +53,8 @@ void	display_error(char *msg);
 /* DISPLAY */
 
 void	display_map(t_map *map);
+
+void	count_other_elements(t_map *map, int *other_count);
+int		is_valid_char(char c);
 
 #endif

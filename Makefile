@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 17:53:43 by rcochran          #+#    #+#              #
-#    Updated: 2025/03/19 00:10:02 by rcochran         ###   ########.fr        #
+#    Updated: 2025/03/19 17:19:05 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ FILES		= 	actions \
 				exit \
 				keybind \
 				map_validity \
+				map_validity_utils \
 				map \
 				moves \
 				pathfinding \

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 20:14:59 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/19 16:11:28 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:16:49 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	check_map_validity(t_map *map)
 	if (!map)
 		return (0);
 	if (!map_is_rectangular(map) || !valid_borders(map) || !valid_elements(map))
+		return (0);
+	if (!valid_path(map))
 		return (0);
 	return (1);
 }
@@ -74,10 +76,10 @@ static void	count_elements(t_map *map, int *player_count,
 	int	x;
 
 	y = 0;
-	while (y++ < map->height)
+	while (y < map->height)
 	{
 		x = 0;
-		while (x++ < map->width)
+		while (x < map->width)
 		{
 			if (map->grid[y][x] == 'P')
 			{
@@ -89,28 +91,29 @@ static void	count_elements(t_map *map, int *player_count,
 				(*exit_count)++;
 			else if (map->grid[y][x] == 'C')
 				(*collectible_count)++;
-			else if (map->grid[y][x] != '1' && map->grid[y][x] != '0')
-			{
-				(*exit_count) = -1;
-				return ;
-			}
+			x++;
 		}
+		y++;
 	}
 }
 
+/* TODO Bonus : add ennemy patrol to valid char */
 static int	valid_elements(t_map *map)
 {
 	int		player_count;
 	int		exit_count;
 	int		collectible_count;
+	int		other_count;
 
 	player_count = 0;
 	exit_count = 0;
 	collectible_count = 0;
+	other_count = 0;
 	count_elements(map, &player_count, &exit_count, &collectible_count);
+	count_other_elements(map, &other_count);
 	if (player_count != 1 || exit_count != 1 || collectible_count == 0)
 		return (display_error(INVALID_ELEM_1), 0);
-	if (exit_count == -1)
+	if (other_count != 0)
 		return (display_error(INVALID_ELEM_2), 0);
 	return (1);
 }

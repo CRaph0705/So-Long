@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:11:15 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/19 15:32:38 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:33:31 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,16 +93,12 @@ void	fill_map(t_map *map, int fd)
 		(close(fd), display_error(EMPTY_MAP_FILE));
 		return ;
 	}
-;	while (line != NULL)
+	while (line != NULL)
 	{
-		if (map->height == 0)
-		{
-			map->width = (int)ft_strlen(line);
-			if(line[map->width - 1] == '\n')
-				map->width--;
-		}
 		map->grid = ft_realloc(map->grid, sizeof(char *) * (map->height + 2));
 		map->grid[i] = ft_strtrim(line, "\n");
+		if (map->height == 0)
+			map->width = (int)(ft_strlen(map->grid[i]));
 		free(line);
 		i++;
 		map->height++;

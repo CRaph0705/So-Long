@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 23:40:48 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/19 16:53:22 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:27:30 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int	valid_path(t_map *map);
 int	valid_path(t_map *map)
 {
 	(void)map;
-	display_error(INVALID_MAP_2);
+	// return (display_error(INVALID_MAP_2), 0);
 	return (1);
 }

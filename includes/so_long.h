@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/19 18:27:09 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:13:38 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "libft.h"
-// TODO # include <mlx.h>
+# include "mlx.h"
 
 # define PARSE_ERROR_1 "parse_map() : Error opening file.\n"
 # define PARSE_ERROR_2 "parse_map() : Error on t_map malloc.\n"
@@ -26,6 +26,7 @@
 # define INVALID_MAP_1 "check_map_validity() : Invalid map : not rectangle.\n"
 # define INVALID_MAP_2 "Error: No valid path to exit or collectibles.\n"
 # define INVALID_MAP_3 "valid_path() : Error on t_map malloc.\n"
+# define INVALID_MAP_4 "valid_path() : No src map given.\n"
 
 /* 	
 {	

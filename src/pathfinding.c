@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 23:40:48 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/19 18:44:06 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:20:13 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,27 +44,6 @@ static	t_map	*dup_map(t_map *map);
 static	void	flood_fill(t_map *map, int x, int y);
 static int	is_filled(t_map *map);
 
-/* int	valid_path(t_map *map)
-{
-	(void)map;
-	// return (display_error(INVALID_MAP_2), 0);
-	return (1);
-} */
-
-static void	flood_fill(t_map *map, int x, int y)
-{
-	if (x < 0 || x >= map->width || y < 0 || y >= map->height)
-		return ;
-	if (map->grid[y][x] == '1' || map->grid[y][x] == 'F')
-		return ;
-	map->grid[y][x] = 'F';
-	flood_fill(map, x + 1, y);
-	flood_fill(map, x - 1, y);
-	flood_fill(map, x, y + 1);
-	flood_fill(map, x, y - 1);
-}
-
-// TODO debug segfault
 static t_map	*dup_map(t_map *map)
 {
 	t_map	*new_map;
@@ -74,11 +53,11 @@ static t_map	*dup_map(t_map *map)
 	map_h = map->height;
 	new_map = malloc(sizeof(t_map));
 	if (!new_map)
-		return (NULL);
+		return (display_error(INVALID_MAP_3), NULL);
 	i = 0;
-	while (i < map_h)
+	new_map->grid = ft_calloc(map_h, sizeof(char *) + 1);
+	while (map->grid[i])
 	{
-		new_map->grid = ft_realloc(new_map->grid, sizeof(char *) * map_h);
 		new_map->grid[i] = strdup(map->grid[i]);
 		i++;
 	}
@@ -88,21 +67,22 @@ static t_map	*dup_map(t_map *map)
 	return (new_map);
 }
 
-int	valid_path(t_map *map)
+int	valid_path(t_map *src_map)
 {
 	t_map	*tmp_map;
 	int		valid;
 
 	valid = 1;
-	tmp_map = dup_map(map);
+	if (!src_map)
+		return (display_error(INVALID_MAP_4), 0);
+	tmp_map = dup_map(src_map);
 	if (!tmp_map)
 		return (display_error(INVALID_MAP_3), 0);
-	flood_fill(tmp_map, map->player_pos_x, map->player_pos_y);
+	flood_fill(tmp_map, src_map->player_pos_x, src_map->player_pos_y);
 	valid = is_filled(tmp_map);
-	free_map(tmp_map);
 	if (!valid)
-		return (display_error(INVALID_MAP_2), 0);
-	return (1);
+		return (free_map(tmp_map), display_error(INVALID_MAP_2), 0);
+	return (free_map(tmp_map), 1);
 }
 
 static int	is_filled(t_map *map)
@@ -128,4 +108,17 @@ static int	is_filled(t_map *map)
 		y++;
 	}
 	return (valid);
+}
+
+static void	flood_fill(t_map *map, int x, int y)
+{
+	if (x < 0 || x >= map->width || y < 0 || y >= map->height)
+		return ;
+	if (map->grid[y][x] == '1' || map->grid[y][x] == 'F')
+		return ;
+	map->grid[y][x] = 'F';
+	flood_fill(map, x + 1, y);
+	flood_fill(map, x - 1, y);
+	flood_fill(map, x, y + 1);
+	flood_fill(map, x, y - 1);
 }

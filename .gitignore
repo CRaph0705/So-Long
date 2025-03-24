@@ -8,3 +8,8 @@ so_long
 /libft/libft.a
 
 /*.txt
+
+/assets/maps
+
+/mlx_linux
+/mlx*

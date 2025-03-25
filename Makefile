@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 17:53:43 by rcochran          #+#    #+#              #
-#    Updated: 2025/03/24 13:44:03 by rcochran         ###   ########.fr        #
+#    Updated: 2025/03/25 12:06:38 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,17 @@ NAME		= 	so_long
 
 LIBFT_PATH	=	./libft
 LIBFT		=	$(LIBFT_PATH)/libft.a
-MLX_PATH 	=	./mlx_linux
+# MLX_PATH 	=	./mlx_linux
+UNAME := $(shell uname)
+
+ifeq ($(UNAME), Darwin)
+	MLX_PATH 	= ./mlx_macos
+else
+	MLX_PATH 	= ./mlx_linux
+endif
 MLX			=	$(MLX_PATH)/libmlx.a
+
+
 
 INCLUDES	= -I$(LIBFT_PATH)/includes -I ./includes -I/usr/include -I$(MLX_PATH) -O3
 # BINCLUDES	=	-I ./bonus
@@ -31,8 +40,8 @@ FILES		= 	actions \
 				error \
 				exit \
 				keybind \
-				map_validity \
 				map_validity_utils \
+				map_validity \
 				map \
 				moves \
 				pathfinding \
@@ -77,7 +86,11 @@ fclean : clean
 re : fclean all
 
 $(NAME) : $(MLX) $(LIBFT) $(OBJ_DIR) $(OBJ) $(OBJ_MAIN)
+ifeq ($(UNAME), Darwin)
+	$(CC) $(OBJ) $(OBJ_MAIN) -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+else
 	$(CC) -g3 $(CFLAGS) $(OBJ) $(OBJ_MAIN)  -lX11 -lXext -lm -L$(MLX_PATH) -lmlx -L$(LIBFT_PATH) -lft -o $(NAME)
+endif
 
 $(LIBFT):
 	make -C $(LIBFT_PATH)

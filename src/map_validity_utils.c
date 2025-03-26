@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:12:40 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/19 17:55:24 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:45:12 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,9 @@ void	count_other_elements(t_map *map, int *other_count)
 		}
 		y++;
 	}
+}
+int	valid_filename(char *file_name)
+{
+	file_name = file_name + (ft_strlen(file_name) - 4);
+	return (ft_strncmp(file_name, ".ber", 4) == 0);
 }

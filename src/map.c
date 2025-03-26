@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:11:15 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/21 12:58:35 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:46:32 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ t_map	*parse_map(char *map_name)
 	t_map	*new_map;
 	int		fd;
 
+	if (valid_filename(map_name) == 0)
+		return (display_error(INVALID_FILE), NULL);
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 	{

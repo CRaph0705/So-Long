@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/25 11:56:30 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:46:41 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define INVALID_MAP_2 "Error: No valid path to exit or collectibles.\n"
 # define INVALID_MAP_3 "valid_path() : Error on t_map malloc.\n"
 # define INVALID_MAP_4 "valid_path() : No src map given.\n"
+# define INVALID_FILE "Error : Invalid file extension.\n"
 
 /* 	
 {	
@@ -78,9 +79,15 @@ void	display_error(char *msg);
 
 /* DISPLAY */
 
+void	display_map_grid(t_map *map);
 void	display_map(t_map *map);
 
 void	count_other_elements(t_map *map, int *other_count);
 int		is_valid_char(char c);
+int		valid_filename(char *file_name);
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	put_square(t_data *data, int x, int y, int color);
+void	put_circle(t_data *data, int x, int y, int color);
 
 #endif

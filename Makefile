@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 17:53:43 by rcochran          #+#    #+#              #
-#    Updated: 2025/03/25 12:06:38 by rcochran         ###   ########.fr        #
+#    Updated: 2025/03/25 13:46:34 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ re : fclean all
 
 $(NAME) : $(MLX) $(LIBFT) $(OBJ_DIR) $(OBJ) $(OBJ_MAIN)
 ifeq ($(UNAME), Darwin)
-	$(CC) $(OBJ) $(OBJ_MAIN) -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(OBJ_MAIN) -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 else
 	$(CC) -g3 $(CFLAGS) $(OBJ) $(OBJ_MAIN)  -lX11 -lXext -lm -L$(MLX_PATH) -lmlx -L$(LIBFT_PATH) -lft -o $(NAME)
 endif

@@ -38,3 +38,7 @@ VI- Bonus
 
 assets :
 - https://sethbb.itch.io/32rogues
+
+
+credits to Anokolisa
+- https://anokolisa.itch.io/free-pixel-art-asset-pack-topdown-tileset-rpg-16x16-sprites

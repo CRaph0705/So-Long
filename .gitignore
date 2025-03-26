@@ -9,7 +9,7 @@ so_long
 
 /*.txt
 
-/assets/maps
+# /assets/maps
 
 /mlx_linux
 /mlx*

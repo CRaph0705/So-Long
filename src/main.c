@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:50:58 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 19:14:03 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:24:03 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int	main(int ac, char **av)
 	// mlx_loop(mlx);
 	init_window(game);
 	render(game);
-	mlx_loop(game->mlx);
 	mlx_key_hook(game->mlx_win, handle_keypress, game);
+	mlx_loop(game->mlx);
 	free_map(map);
 	ft_printf("free map OK ✅\n");
 	free(game);

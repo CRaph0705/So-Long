@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:08:10 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 19:20:04 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:28:48 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,21 @@ void	move_player(t_game *game, int x_input, int y_input)
 	if (next_tile == 'C')
 	{
 		// si collectible, alors augmenter un compteur de 1
-		game->map->collected_count++;
 		//changer la tile actuelle par 0 ?
 		// verif si exit_condition est remplie, si oui changer visuel exit
 		return ;
+		game->map->collected_count++;
 	}
 	if (next_tile == 'E')
 	{
 		//si la next case est sortie : verif condition de sortie si remplie, alors ecran de fin / exit
 		return ;
 	}
+	game->map->grid[game->map->player_pos_y][game->map->player_pos_x] = '0';
+	game->map->grid[new_y][new_x] = 'P';
+	game->map->player_pos_x = new_x;
+	game->map->player_pos_y = new_y;
+	render(game);
 }
 
 int	handle_keypress(int keycode, t_game *game)

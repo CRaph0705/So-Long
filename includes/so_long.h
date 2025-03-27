@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 17:23:58 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 18:22:30 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@
 # define TILE_SIZE 32
 # define GAME_ERROR_1 "Malloc error \n"
 
+# define ESC_KEY 53
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_UP 126
+# define KEY_LEFT 123
+# define KEY_DOWN 125
+# define KEY_RIGHT 124
+# define KEY_Z 6
+# define KEY_Q 12
 /* 	
 {	
 	char	**grid;
@@ -110,5 +121,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	render(t_game *game);
 void	init_window(t_game *game);
 void	load_textures(t_game *game);
+
+void	handle_keypress(int keycode, t_game *game);
 
 #endif

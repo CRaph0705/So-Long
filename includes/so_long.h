@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 16:02:54 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:23:58 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,13 @@ typedef struct s_game
 	void	*mlx_win;
 	void	*wall;
 	void	*obstacle;
-	void	*floor;
+	void	*floor_00;
+	void	*floor_01;
+	void	*floor_02;
+	void	*floor_03;
 	void	*player;
-	void	*exit;
+	void	*exit_opened;
+	void	*exit_closed;
 	void	*collectible;
 	t_map	*map;
 }	t_game;

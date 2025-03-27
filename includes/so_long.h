@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 20:25:12 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 23:35:21 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@
 typedef struct s_map
 {
 	char	**grid;
+	void	***floor_init_state;
 	int		width;
 	int		height;
 	int		player_pos_x;
@@ -92,6 +93,7 @@ typedef struct s_game
 	void	*exit_opened;
 	void	*exit_closed;
 	void	*collectible;
+	int		moves_count;
 	t_map	*map;
 }	t_game;
 
@@ -130,6 +132,8 @@ void	render_tile(t_game *game, int x, int y);
 void	move_player(t_game *game, int x_input, int y_input);
 int		handle_keypress(int keycode, t_game *game);
 void	win_trigger(t_game *game);
+void	init_floor_map(t_game *game);
+void	restore_tile(t_game *game, int x, int y);
 
 void	exit_game(t_game *game, int n);
 

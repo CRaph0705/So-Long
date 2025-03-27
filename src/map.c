@@ -6,59 +6,16 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:11:15 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/26 15:46:32 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 22:49:08 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-// parse map
-
-/* The map has to be constructed with 3 components: 
-walls, collectibles, and free space. */
-
-/* TODO The map can be composed of only these 5 characters:
-0 for an empty space,
-1 for a wall,
-C for a collectible,
-E for a map exit,
-P for the player’s starting position */
-
-/* TODO The map must contain 1 exit, at least 1 collectible,
-and 1 starting position to be valid. */
-
-/* TODO The map must be rectangular. */
-
-/* TODO The map must be closed/surrounded by walls.
-If it’s not, the program must return an error. */
-
-/* TODO You have to check if there’s a valid path in the map. */
-
-/* • You must be able to parse any kind of map,
-as long as it respects the above rules. */
-
-/* If any misconfiguration of any kind is encountered in the file,
-the program must exit in a clean way,
-and return "Error\n" followed by an
-TODO explicit error message
-of your choice. */
 
 t_map		*parse_map(char *map_name);
 void		fill_map(t_map *new_map, int fd);
-
 int			check_map_validity(t_map *map);
-
 void		free_map(t_map *map);
-
-t_map		*init_map(char *map_name);
-
-t_map	*init_map(char *map_name)
-{
-	t_map	*map;
-
-	(void)map_name;
-	map = NULL;
-	return (map);
-}
 
 t_map	*parse_map(char *map_name)
 {

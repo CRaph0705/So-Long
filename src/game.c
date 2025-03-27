@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:02:28 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 17:45:05 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 20:27:56 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	render(t_game *game);
 void	init_window(t_game *game);
 void	load_textures(t_game *game);
 void	*get_random_floor(t_game *game);
+void	render_tile(t_game *game, int x, int y);
+void	win_trigger(t_game *game);
 
 void	load_textures(t_game *game)
 {
@@ -110,3 +112,35 @@ void	render(t_game *game)
 	}
 }
 
+void	render_tile(t_game *game, int x, int y)
+{
+	void	*img;
+
+	img = game->floor_00;
+	if (game->map->grid[y][x] == '1')
+		img = game->wall;
+	else if (game->map->grid[y][x] == 'E')
+	{
+		img = game->exit_closed;
+		if (game->map->collected_count == game->map->collectible_count)
+			img = game->exit_opened;
+	}
+	else if (game->map->grid[y][x] == 'C')
+		img = game->collectible;
+	else if (game->map->grid[y][x] == 'P')
+		img = game->player;
+	mlx_put_image_to_window(
+		game->mlx, game->mlx_win, img, x * TILE_SIZE, y * TILE_SIZE);
+}
+
+void	win_trigger(t_game *game)
+{
+	int		x;
+	int		y;
+
+	x = game->map->exit_x;
+	y = game->map->exit_y;
+	if (game->map->collected_count != game->map->collectible_count)
+		return ;
+	render_tile(game, x, y);
+}

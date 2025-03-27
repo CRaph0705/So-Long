@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 23:40:48 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 19:11:09 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 20:21:34 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int	valid_path(t_map *src_map)
 	if (!valid)
 		return (free_map(tmp_map), display_error(INVALID_MAP_2), 0);
 	src_map->collectible_count = tmp_map->collectible_count;
+	src_map->exit_x = tmp_map->exit_x;
+	src_map->exit_y = tmp_map->exit_y;
 	return (free_map(tmp_map), 1);
 }
 
@@ -120,6 +122,11 @@ static void	flood_fill(t_map *map, int x, int y)
 		return ;
 	if (map->grid[y][x] == 'C')
 		map->collectible_count++;
+	if (map->grid[y][x] == 'E')
+	{
+		map->exit_x = x;
+		map->exit_y = y;
+	}
 	map->grid[y][x] = 'F';
 	flood_fill(map, x + 1, y);
 	flood_fill(map, x - 1, y);

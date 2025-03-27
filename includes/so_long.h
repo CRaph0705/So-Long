@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 19:17:05 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 20:25:12 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ typedef struct s_map
 	int		player_pos_y;
 	int		collectible_count;
 	int		collected_count;
+	int		exit_x;
+	int		exit_y;
 }	t_map;
 
 typedef struct s_data
@@ -123,9 +125,11 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	render(t_game *game);
 void	init_window(t_game *game);
 void	load_textures(t_game *game);
+void	render_tile(t_game *game, int x, int y);
 
 void	move_player(t_game *game, int x_input, int y_input);
 int		handle_keypress(int keycode, t_game *game);
+void	win_trigger(t_game *game);
 
 void	exit_game(t_game *game, int n);
 

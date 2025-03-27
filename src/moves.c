@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:08:10 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 19:28:48 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 20:25:01 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,40 @@ int	handle_keypress(int keycode, t_game *game);
 void	move_player(t_game *game, int x_input, int y_input)
 {
 /* 	check if next tile is not a wall */
-	int		new_x;
-	int		new_y;
-	char	next_tile;
+	int			new_x;
+	int			new_y;
+	char		next_tile;
+	static void	*old_tile;
 
+	// recup l'img next tile floor, superposer player dessus, reconstruire img sans player après son passage
+	old_tile = NULL;
+	(void) old_tile;
 	new_x = game->map->player_pos_x + x_input;
 	new_y = game->map->player_pos_y + y_input;
 	next_tile = game->map->grid[new_y][new_x];
 	if (next_tile == '1')
 		return ;
 	//TODO on incrémentera ici un compteur de déplacements
-	// recup l'img next tile floor, superposer player dessus, reconstruire img sans player après son passage
 	if (next_tile == 'C')
 	{
 		// si collectible, alors augmenter un compteur de 1
 		//changer la tile actuelle par 0 ?
 		// verif si exit_condition est remplie, si oui changer visuel exit
-		return ;
 		game->map->collected_count++;
+		game->map->grid[new_y][new_x] = '0';
+		win_trigger(game);
 	}
-	if (next_tile == 'E')
+	if (next_tile == 'E' && game->map->collected_count == game->map->collectible_count)
 	{
-		//si la next case est sortie : verif condition de sortie si remplie, alors ecran de fin / exit
-		return ;
+		ft_printf("GG ! ✅\n");
+		exit_game(game, 0);
 	}
 	game->map->grid[game->map->player_pos_y][game->map->player_pos_x] = '0';
 	game->map->grid[new_y][new_x] = 'P';
+	render_tile(game, game->map->player_pos_x, game->map->player_pos_y);
 	game->map->player_pos_x = new_x;
 	game->map->player_pos_y = new_y;
-	render(game);
+	render_tile(game, new_x, new_y);
 }
 
 int	handle_keypress(int keycode, t_game *game)

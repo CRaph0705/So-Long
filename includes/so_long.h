@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 18:22:30 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:17:05 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct s_map
 	int		height;
 	int		player_pos_x;
 	int		player_pos_y;
+	int		collectible_count;
+	int		collected_count;
 }	t_map;
 
 typedef struct s_data
@@ -122,6 +124,9 @@ void	render(t_game *game);
 void	init_window(t_game *game);
 void	load_textures(t_game *game);
 
-void	handle_keypress(int keycode, t_game *game);
+void	move_player(t_game *game, int x_input, int y_input);
+int		handle_keypress(int keycode, t_game *game);
+
+void	exit_game(t_game *game, int n);
 
 #endif

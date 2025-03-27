@@ -6,13 +6,14 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:50:58 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/26 15:43:26 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:46:17 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "so_long.h"
 //convert image en xpm 
+// <brew || apt> install imagemagick
+// convert image.png image.xpm
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -67,7 +68,6 @@ int	main(int ac, char **av)
 		// my_mlx_pixel_put(&img, 5, 15, 0x00FFFFFF);
 		// my_mlx_pixel_put(&img, 15, 15, 0x00FFFFFF);
 		put_square(&img, 16, 16, 0x00FFFFFF);
-		put_circle(&img, 0, 0, 0x00FFFFFF);
 		mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 		mlx_loop(mlx);
 	free_map(map);
@@ -76,3 +76,4 @@ int	main(int ac, char **av)
 
 //void	*mlx_xpm_file_to_image(t_xvar *xvar,char *file,int *width,int *height);
 //void	*mlx_xpm_file_to_image(t_xvar *mlx,char * <path_to_img>,int *width,int *height)
+// mlx_put_image_to_window

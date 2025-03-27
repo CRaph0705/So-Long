@@ -9,7 +9,8 @@ so_long
 
 /*.txt
 
-# /assets/maps
+/assets/spritesheets/32rogues
+/assets/spritesheets/Anokolisa*
 
 /mlx_linux
 /mlx*

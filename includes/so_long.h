@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/26 15:46:41 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:09:03 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,5 @@ int		valid_filename(char *file_name);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	put_square(t_data *data, int x, int y, int color);
-void	put_circle(t_data *data, int x, int y, int color);
 
 #endif

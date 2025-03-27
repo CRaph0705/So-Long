@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 17:53:43 by rcochran          #+#    #+#              #
-#    Updated: 2025/03/25 13:46:34 by rcochran         ###   ########.fr        #
+#    Updated: 2025/03/27 15:31:16 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ FILES		= 	actions \
 				display \
 				error \
 				exit \
+				game \
 				keybind \
 				map_validity_utils \
 				map_validity \

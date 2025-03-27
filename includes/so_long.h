@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 11:09:03 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:02:54 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # define INVALID_MAP_3 "valid_path() : Error on t_map malloc.\n"
 # define INVALID_MAP_4 "valid_path() : No src map given.\n"
 # define INVALID_FILE "Error : Invalid file extension.\n"
+# define TILE_SIZE 32
+# define GAME_ERROR_1 "Malloc error \n"
 
 /* 	
 {	
@@ -61,6 +63,19 @@ typedef struct s_data
 	int		endian;
 }				t_data;
 
+typedef struct s_game
+{
+	void	*mlx;
+	void	*mlx_win;
+	void	*wall;
+	void	*obstacle;
+	void	*floor;
+	void	*player;
+	void	*exit;
+	void	*collectible;
+	t_map	*map;
+}	t_game;
+
 /* PARSING */
 
 /* opens map file, return new struct or error */
@@ -87,6 +102,9 @@ int		is_valid_char(char c);
 int		valid_filename(char *file_name);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	put_square(t_data *data, int x, int y, int color);
+
+void	render(t_game *game);
+void	init_window(t_game *game);
+void	load_textures(t_game *game);
 
 #endif

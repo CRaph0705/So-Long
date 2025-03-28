@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 23:35:21 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/28 11:17:20 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,18 @@
 # define KEY_Z 6
 # define KEY_Q 12
 /* 	
-{	
+{
 	char	**grid;
+	void	***floor_init_state;
 	int		width;
 	int		height;
 	int		player_pos_x;
-	int		player_pos_y; 
-} t_map
+	int		player_pos_y;
+	int		collectible_count;
+	int		collected_count;
+	int		exit_x;
+	int		exit_y;
+}	t_map;
 */
 typedef struct s_map
 {
@@ -70,6 +75,13 @@ typedef struct s_map
 	int		exit_y;
 }	t_map;
 
+/* {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data; */
 typedef struct s_data
 {
 	void	*img;
@@ -79,6 +91,22 @@ typedef struct s_data
 	int		endian;
 }				t_data;
 
+/* {
+	void	*mlx;
+	void	*mlx_win;
+	void	*wall;
+	void	*obstacle;
+	void	*floor_00;
+	void	*floor_01;
+	void	*floor_02;
+	void	*floor_03;
+	void	*player;
+	void	*exit_opened;
+	void	*exit_closed;
+	void	*collectible;
+	int		moves_count;
+	t_map	*map; 
+}	t_game;*/
 typedef struct s_game
 {
 	void	*mlx;
@@ -122,8 +150,6 @@ void	count_other_elements(t_map *map, int *other_count);
 int		is_valid_char(char c);
 int		valid_filename(char *file_name);
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-
 void	render(t_game *game);
 void	init_window(t_game *game);
 void	load_textures(t_game *game);
@@ -135,6 +161,7 @@ void	win_trigger(t_game *game);
 void	init_floor_map(t_game *game);
 void	restore_tile(t_game *game, int x, int y);
 
-void	exit_game(t_game *game, int n);
+int		exit_game(t_game *game, int n);
 
+void	free_game(t_game *game);
 #endif

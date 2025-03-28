@@ -29,16 +29,12 @@ IV- Gestion des props
 V- check leaks, norm
 
 VI- Bonus
+1) Display the movement count directly on screen instead of writing it in the shell.
+2) Add some sprite animation.
+3)  Make the player lose when they touch an enemy patrol.
 
-1) ennemis
-2) combat? armes?
-3) sons ? (tir, ramassage, victoire/défaite du PJ)
-4) animations ?
-5) génération de map ?
-
-assets :
-- https://sethbb.itch.io/32rogues
-
+combat? armes? key bind espace pour tirer ? gestion portée, gestion munitions ? collectibles ammo supplémentaires ?
+déplacement des monstres : aléatoire sauf si LDV avec joueur alors ligne droite vers PJ ?
 
 credits to Anokolisa
 - https://anokolisa.itch.io/free-pixel-art-asset-pack-topdown-tileset-rpg-16x16-sprites

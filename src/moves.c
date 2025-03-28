@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:08:10 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 23:37:17 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/28 11:48:50 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	move_player(t_game *game, int x_input, int y_input)
 	if (next_tile == '1')
 		return ;
 	game->moves_count++;
+	ft_printf("(moves.c) game->moves_count : %d\n", game->moves_count);
 	if (next_tile == 'C')
 	{
 		game->map->collected_count++;
@@ -39,7 +40,6 @@ void	move_player(t_game *game, int x_input, int y_input)
 		ft_printf("GG ! ✅\n");
 		exit_game(game, 0);
 	}
-	// game->map->grid[game->map->player_pos_y][game->map->player_pos_x] = '0';
 	game->map->grid[new_y][new_x] = 'P';
 	restore_tile(game, game->map->player_pos_x, game->map->player_pos_y);
 	game->map->player_pos_x = new_x;
@@ -50,7 +50,7 @@ void	move_player(t_game *game, int x_input, int y_input)
 int	handle_keypress(int keycode, t_game *game)
 {
 	if (keycode == ESC_KEY)
-		exit_game(game, 0);//TODO : add mlx destroy etc??
+		exit_game(game, 0);
 	else if (keycode == KEY_W || keycode == KEY_Z || keycode == KEY_UP)
 		move_player(game, 0, -1);
 	else if (keycode == KEY_S || keycode == KEY_DOWN)

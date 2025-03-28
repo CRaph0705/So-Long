@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 17:53:43 by rcochran          #+#    #+#              #
-#    Updated: 2025/03/27 15:31:16 by rcochran         ###   ########.fr        #
+#    Updated: 2025/03/28 16:20:49 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,10 @@ CC			= 	cc
 CFLAGS		= 	-Wall -Werror -Wextra -MMD -MP
 AR			=	ar -rcs
 NAME		= 	so_long
-# BNAME		=	
+BNAME		=	so_long_bonus
 
 LIBFT_PATH	=	./libft
 LIBFT		=	$(LIBFT_PATH)/libft.a
-# MLX_PATH 	=	./mlx_linux
 UNAME := $(shell uname)
 
 ifeq ($(UNAME), Darwin)
@@ -33,7 +32,7 @@ MLX			=	$(MLX_PATH)/libmlx.a
 
 
 INCLUDES	= -I$(LIBFT_PATH)/includes -I ./includes -I/usr/include -I$(MLX_PATH) -O3
-# BINCLUDES	=	-I ./bonus
+BINCLUDES	= -I$(LIBFT_PATH)/includes -I ./bincludes -I/usr/include -I$(MLX_PATH) -O3
 
 FILES		= 	actions \
 				display \
@@ -48,28 +47,45 @@ FILES		= 	actions \
 				pathfinding \
 				start
 
+BFILES		=	actions \
+				bad_guy \
+				bonus \
+				defeat \
+				display \
+				error \
+				exit \
+				game \
+				keybind \
+				map_validity_utils \
+				map_validity \
+				map \
+				moves \
+				pathfinding \
+				start
+
+
 MAIN		=	main.c
-# BMAIN		=	main_bonus.c
+BMAIN		=	main_bonus.c
 # OBJ_MAIN		= 	$(addprefix $(SRC_DIR), $(MAIN:.c=.o))
 # OBJ_BMAIN		= 	$(addprefix $(SRC_BDIR), $(BMAIN:.c=.o))
 
 SRC_FILES	=	$(addsuffix .c, $(FILES))
-# SRC_BFILES	= 	$(addsuffix .c, $(BFILES))
+SRC_BFILES	= 	$(addsuffix .c, $(BFILES))
 
 OBJ_DIR		= obj/
-# BOBJ_DIR	= bobj/
+BOBJ_DIR	= bobj/
 
 SRC_DIR		= src/
-# SRC_BDIR	= bonus/
+SRC_BDIR	= bonus/
 
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_FILES))
-# BSRC		= 	$(addprefix $(SRC_BDIR), $(SRC_BFILES))
+BSRC		= 	$(addprefix $(SRC_BDIR), $(SRC_BFILES))
 
 OBJ			=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC))
-# BOBJ		=	$(patsubst $(SRC_BDIR)%.c, $(BOBJ_DIR)%.o, $(BSRC))
+BOBJ		=	$(patsubst $(SRC_BDIR)%.c, $(BOBJ_DIR)%.o, $(BSRC))
 
 OBJ_MAIN	=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC_DIR)$(MAIN))
-# OBJ_BMAIN	=	$(patsubst $(SRC_BDIR)%.c, $(BOBJ_DIR)%.o, $(SRC_BDIR)$(BMAIN))
+OBJ_BMAIN	=	$(patsubst $(SRC_BDIR)%.c, $(BOBJ_DIR)%.o, $(SRC_BDIR)$(BMAIN))
 
 all : $(NAME)
 
@@ -91,6 +107,13 @@ ifeq ($(UNAME), Darwin)
 	$(CC) $(CFLAGS) $(OBJ) $(OBJ_MAIN) -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 else
 	$(CC) -g3 $(CFLAGS) $(OBJ) $(OBJ_MAIN)  -lX11 -lXext -lm -L$(MLX_PATH) -lmlx -L$(LIBFT_PATH) -lft -o $(NAME)
+endif
+
+$(BNAME) : $(MLX) $(LIBFT) $(BOBJ_DIR) $(BOBJ) $(OBJ_BMAIN)
+ifeq ($(UNAME), Darwin)
+	$(CC) $(CFLAGS) $(BOBJ) $(OBJ_BMAIN) -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit -o $(BNAME)
+else
+	$(CC) -g3 $(CFLAGS) $(BOBJ) $(OBJ_BMAIN) -lX11 -lXext -lm -L$(MLX_PATH) -lmlx -L$(LIBFT_PATH) -lft -o $(BNAME)
 endif
 
 $(LIBFT):
@@ -116,6 +139,6 @@ $(BOBJ_DIR) :
 debug : $(LIBFT) $(OBJ_DIR) $(OBJ) Makefile
 	$(CC) -g3 $(CFLAGS) $(OBJ) $(OBJ_MAIN) -L$(LIBFT_PATH) -lft -o $(NAME)
 
-# bonus: $(NAME)
+bonus : $(BNAME)
 
-# rebonus: fclean bonus
+rebonus: fclean bonus

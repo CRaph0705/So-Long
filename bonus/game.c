@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:02:28 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/28 21:00:16 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/31 00:14:54 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,38 @@ void	*get_random_floor(t_game *game)
 		return (game->floor_03);
 }
 
+/* agrandir la window pour display le compteur ? 
+
+game->map->height * TILE_SIZE + 40 ?
+display move counts
+TODO : à modifier ensuite dans moves.c ?
+ft_printf("(moves.c) game->moves_count : %d\n", game->moves_count);
+
+*/
+
+// à voir si display centré ? pour l'instant top 10 left 10
+void	display_moves_count(t_game *game)
+{
+	char	*count_str;
+	char	*str;
+
+	count_str = ft_itoa(game->moves_count);
+	if (!count_str)
+		return ;
+	str = ft_strjoin("Moves: ", count_str);
+	free(count_str);
+	mlx_string_put(game->mlx, game->mlx_win, 10, 10, 0xFFFFFF, str);
+	free(str);
+}
+// pareil avec nb collected/nb collectible ?
+
 void	init_window(t_game *game)
 {
 	game->mlx = mlx_init();
 	game->mlx_win = mlx_new_window(
 			game->mlx,
 			game->map->width * TILE_SIZE,
-			game->map->height * TILE_SIZE,
+			game->map->height * TILE_SIZE + 40,
 			"THE GAME"
 			);
 	load_textures(game);
@@ -111,6 +136,7 @@ void	render(t_game *game)
 		}
 		y++;
 	}
+	display_moves_count(game);
 }
 
 void	restore_tile(t_game *game, int x, int y)

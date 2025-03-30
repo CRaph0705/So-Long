@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:02:16 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/28 20:56:09 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/28 22:50:47 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	move_baddy(t_bad_guy *bad_guy, t_game *game)
 	// ignorer les case E et C ? ou passer dessus puis restore tile ?
 	if (next_pos == 'E' || next_pos == '1' || next_pos == 'B' || next_pos == 'C')
 	{
-		printf("this bad guy won't move this turn.\n");
+		ft_printf("this bad guy won't move this turn.\n");
 		return ;
 	}
 	if (next_pos == 'P')
@@ -105,8 +105,6 @@ void	move_baddy(t_bad_guy *bad_guy, t_game *game)
 
 int	move_baddies(t_game *game)
 {
-	int			new_x;
-	int			new_y;
 	t_bad_guy	*bad_guy;
 
 	if (!game)
@@ -114,7 +112,6 @@ int	move_baddies(t_game *game)
 	if (!game->map->baddies)
 		return (0);
 	bad_guy = game->map->baddies;
-	(void)new_x, (void) new_y, (void) bad_guy;
 	ft_printf("move_baddies()\n");
 	while (bad_guy != NULL)
 	{

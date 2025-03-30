@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:08:10 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/28 17:06:53 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/31 00:15:35 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	move_player(t_game *game, int x_input, int y_input)
 	render_tile(game, new_x, new_y);
 	move_baddies(game);
 }
+// TODO : Ici ^ refresh la vue pour actualiser le display count
 
 int	handle_keypress(int keycode, t_game *game)
 {

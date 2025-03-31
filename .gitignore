@@ -3,7 +3,8 @@
 
 /obj
 /bobj
-so_long*
+so_long
+so_long_bonus
 
 /libft/obj
 /libft/libft.a

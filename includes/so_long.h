@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/28 11:17:20 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/31 10:29:07 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 /* 	
 {
 	char	**grid;
-	void	***floor_init_state;
+	void	***floor_start;
 	int		width;
 	int		height;
 	int		player_pos_x;
@@ -64,7 +64,7 @@
 typedef struct s_map
 {
 	char	**grid;
-	void	***floor_init_state;
+	void	***floor_start;
 	int		width;
 	int		height;
 	int		player_pos_x;
@@ -159,6 +159,11 @@ void	move_player(t_game *game, int x_input, int y_input);
 int		handle_keypress(int keycode, t_game *game);
 void	win_trigger(t_game *game);
 void	init_floor_map(t_game *game);
+void	free_l_floor_map(t_game *game, int limit);
+int		alloc_floor_map(t_game *game);
+void	fill_floor_map(t_game *game);
+void	*get_random_floor(t_game *game);
+
 void	restore_tile(t_game *game, int x, int y);
 
 int		exit_game(t_game *game, int n);

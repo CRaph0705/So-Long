@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:12:40 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/26 15:45:12 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/31 09:02:01 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void		count_other_elements(t_map *map, int *other_count);
 int			is_valid_char(char c);
 
-/* TODO : ADD BONUS CHAR IN VALID CHAR LIST BELOW */
 int	is_valid_char(char c)
 {
 	return (c == 'P' || c == 'E' || c == 'C' || c == '0' || c == '1');
@@ -42,6 +41,7 @@ void	count_other_elements(t_map *map, int *other_count)
 		y++;
 	}
 }
+
 int	valid_filename(char *file_name)
 {
 	file_name = file_name + (ft_strlen(file_name) - 4);

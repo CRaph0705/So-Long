@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:58:43 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/31 00:21:55 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/31 09:05:51 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int		exit_game(t_game *game, int n);
 void	destroy_game_textures(t_game *game);
 void	destroy_game_mlx(t_game *game);
 void	free_game(t_game *game);
+void	free_baddies(t_map *map);
 
-//TODO : free map baddies ici
 void	free_game(t_game *game)
 {
 	if (!game)
@@ -59,7 +59,6 @@ void	destroy_game_textures(t_game *game)
 		mlx_destroy_image(game->mlx, game->obstacle);
 	if (game->bad_guy)
 		mlx_destroy_image(game->mlx, game->bad_guy);
-
 }
 
 void	destroy_game_mlx(t_game *game)
@@ -81,7 +80,6 @@ int	exit_game(t_game *game, int n)
 	exit(n);
 	return (0);
 }
-
 
 void	free_baddies(t_map *map)
 {

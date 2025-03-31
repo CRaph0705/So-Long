@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:12:40 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/28 15:36:49 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/31 09:06:06 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void		count_other_elements(t_map *map, int *other_count);
 int			is_valid_char(char c);
 
-/* TODO : ADD BONUS CHAR IN VALID CHAR LIST BELOW */
 int	is_valid_char(char c)
 {
 	return (c == 'P' || c == 'E' || c == 'C' || c == '0' || c == '1'

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:11:15 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 22:49:08 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/31 10:05:57 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_map		*parse_map(char *map_name);
 void		fill_map(t_map *new_map, int fd);
 int			check_map_validity(t_map *map);
 void		free_map(t_map *map);
+void		free_floor_map(t_map *map);
 
 t_map	*parse_map(char *map_name)
 {
@@ -78,5 +79,23 @@ void	free_map(t_map *map)
 		i++;
 	}
 	free(map->grid);
+	free_floor_map(map);
 	free(map);
+}
+
+void	free_floor_map(t_map *map)
+{
+	int	y;
+
+	if (!map || !map->floor_start)
+		return ;
+	y = 0;
+	while (y < map->height)
+	{
+		if (map->floor_start[y])
+			free(map->floor_start[y]);
+		y++;
+	}
+	free(map->floor_start);
+	map->floor_start = NULL;
 }

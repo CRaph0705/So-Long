@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:02:28 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/31 00:14:54 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/31 10:40:39 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,6 @@ ft_printf("(moves.c) game->moves_count : %d\n", game->moves_count);
 
 */
 
-// à voir si display centré ? pour l'instant top 10 left 10
-void	display_moves_count(t_game *game)
-{
-	char	*count_str;
-	char	*str;
-
-	count_str = ft_itoa(game->moves_count);
-	if (!count_str)
-		return ;
-	str = ft_strjoin("Moves: ", count_str);
-	free(count_str);
-	mlx_string_put(game->mlx, game->mlx_win, 10, 10, 0xFFFFFF, str);
-	free(str);
-}
 // pareil avec nb collected/nb collectible ?
 
 void	init_window(t_game *game)
@@ -100,98 +86,20 @@ void	init_window(t_game *game)
 	load_textures(game);
 }
 
-void	render(t_game *game)
-{
-	int		y;
-	int		x;
-	void	*img;
-
-	y = 0;
-	while (y < game->map->height)
-	{
-		x = 0;
-		while (x < game->map->width)
-		{
-			if(game->map->floor_init_state[y][x])
-				mlx_put_image_to_window(game->mlx, game->mlx_win, game->map->floor_init_state[y][x], x * TILE_SIZE, y * TILE_SIZE);
-			img = NULL;
-			if (game->map->grid[y][x] == '1')
-			{
-				if (y == 0 || y == game->map->height - 1 || x == 0 || x == game->map->width - 1)
-					img = game->wall;
-				else
-					img = game->obstacle;
-			}
-			else if (game->map->grid[y][x] == 'E')
-				img = game->exit_closed;
-			else if (game->map->grid[y][x] == 'P')
-				img = game->player;
-			else if (game->map->grid[y][x] == 'C')
-				img = game->collectible;
-			else if (game->map->grid[y][x] == 'B')
-				img = game->bad_guy;
-			if (img)
-				mlx_put_image_to_window(game->mlx, game->mlx_win, img, x * TILE_SIZE, y * TILE_SIZE);
-			x++;
-		}
-		y++;
-	}
-	display_moves_count(game);
-}
-
-void	restore_tile(t_game *game, int x, int y)
-{
-	void	*img;
-
-	img = game->map->floor_init_state[y][x];
-	if (img == game->exit_closed)
-		game->map->grid[y][x] = 'E';
-	else
-		game->map->grid[y][x] = '0';
-	mlx_put_image_to_window(game->mlx,
-		game->mlx_win, img, x * TILE_SIZE, y * TILE_SIZE);
-}
-
-void	render_tile(t_game *game, int x, int y)
-{
-	void	*img;
-
-	if (game->map->grid[y][x] == '1')
-		img = game->wall;
-	else if (game->map->grid[y][x] == 'E')
-	{
-		if (game->map->collected_count == game->map->collectible_count)
-			img = game->exit_opened;
-		else
-			img = game->exit_closed;
-	}
-	else if (game->map->grid[y][x] == 'C')
-		img = game->collectible;
-	else if (game->map->grid[y][x] == 'P')
-		img = game->player;
-	else if (game->map->grid[y][x] == 'B')
-		img = game->bad_guy;
-	else
-		return ;
-	mlx_put_image_to_window(game->mlx,
-		game->mlx_win, img, x * TILE_SIZE, y * TILE_SIZE);
-}
-
-
 /* void	render_tile(t_game *game, int x, int y)
 {
 	void	*img;
 
-	if (!game->map->floor_init_state[y][x])
+	if (!game->map->floor_start[y][x])
 		img = game->floor_00;
 	else
-		img = game->map->floor_init_state[y][x];
+		img = game->map->floor_start[y][x];
 	mlx_put_image_to_window(
 		game->mlx, game->mlx_win, img, x * TILE_SIZE, y * TILE_SIZE);
 	img = NULL;
 	if (game->map->grid[y][x] == '1')
 		img = game->wall;
-	else if (game->map->floor_init_state[y][x] == game->exit_closed)
+	else if (game->map->floor_start[y][x] == game->exit_closed)
 	{
 		img = game->exit_closed;
 		if (game->map->collected_count == game->map->collectible_count)
@@ -199,7 +107,7 @@ void	render_tile(t_game *game, int x, int y)
 	}
 	else if (game->map->grid[y][x] == 'C')
 		img = game->collectible;
-	else if (game->map->floor_init_state[y][x] == game->player)
+	else if (game->map->floor_start[y][x] == game->player)
 		img = game->player;
 	if (img)
 		mlx_put_image_to_window(
@@ -217,32 +125,34 @@ void	win_trigger(t_game *game)
 		return ;
 	render_tile(game, x, y);
 }
-
+/* 
 void	init_floor_map(t_game *game)
 {
 	int	y;
 	int	x;
 
 	y = 0;
-	game->map->floor_init_state = malloc(sizeof(void **) * game->map->height);
-	if (!game->map->floor_init_state)
+	game->map->floor_start = malloc(sizeof(void **) * game->map->height);
+	if (!game->map->floor_start)
 		return ;
 	while (y < game->map->height)
 	{
 		x = 0;
-		game->map->floor_init_state[y] = malloc(sizeof(void *) * game->map->width);
-		if (!game->map->floor_init_state[y])
+		game->map->floor_start[y] = malloc(sizeof(void *) * game->map->width);
+		if (!game->map->floor_start[y])
 			return ;
 		while (x < game->map->width)
 		{
-			if (game->map->grid[y][x] == '0' || game->map->grid[y][x] == 'P' || game->map->grid[y][x] == 'C' || game->map->grid[y][x] == 'B')
-				game->map->floor_init_state[y][x] = get_random_floor(game);
+			if (game->map->grid[y][x] == '0' || game->map->grid[y][x] == 'P'
+				|| game->map->grid[y][x] == 'C' || game->map->grid[y][x] == 'B')
+				game->map->floor_start[y][x] = get_random_floor(game);
 			else if (game->map->grid[y][x] == 'E')
-				game->map->floor_init_state[y][x] = game->exit_closed;
+				game->map->floor_start[y][x] = game->exit_closed;
 			else
-				game->map->floor_init_state[y][x] = NULL;
+				game->map->floor_start[y][x] = NULL;
 			x++;
 		}
 		y++;
 	}
 }
+ */

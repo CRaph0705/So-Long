@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 20:14:59 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/28 17:38:10 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/31 09:07:12 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ static void	count_elements(t_map *map, int *player_count,
 	}
 }
 
-/* TODO Bonus : add ennemy patrol to valid char */
 static int	valid_elements(t_map *map)
 {
 	int		player_count;

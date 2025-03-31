@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 17:53:43 by rcochran          #+#    #+#              #
-#    Updated: 2025/03/28 16:20:49 by rcochran         ###   ########.fr        #
+#    Updated: 2025/03/31 10:38:14 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,34 +34,32 @@ MLX			=	$(MLX_PATH)/libmlx.a
 INCLUDES	= -I$(LIBFT_PATH)/includes -I ./includes -I/usr/include -I$(MLX_PATH) -O3
 BINCLUDES	= -I$(LIBFT_PATH)/includes -I ./bincludes -I/usr/include -I$(MLX_PATH) -O3
 
-FILES		= 	actions \
-				display \
+FILES		=	display \
 				error \
 				exit \
+				floor_map \
 				game \
-				keybind \
 				map_validity_utils \
 				map_validity \
 				map \
 				moves \
 				pathfinding \
-				start
+				render
 
-BFILES		=	actions \
-				bad_guy \
-				bonus \
+BFILES		=	bad_guy \
 				defeat \
+				display_utils \
 				display \
 				error \
 				exit \
+				floor_map \
 				game \
-				keybind \
 				map_validity_utils \
 				map_validity \
 				map \
 				moves \
 				pathfinding \
-				start
+				render
 
 
 MAIN		=	main.c

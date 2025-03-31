@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:46:40 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/27 15:02:23 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/03/31 10:12:46 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	display_map_grid(t_map *map);
 void	display_map(t_map *map);
-
 
 void	display_map_grid(t_map *map)
 {
@@ -41,4 +40,3 @@ void	display_map(t_map *map)
 	}
 	return ;
 }
-

@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 17:53:43 by rcochran          #+#    #+#              #
-#    Updated: 2025/04/01 12:06:16 by rcochran         ###   ########.fr        #
+#    Updated: 2025/04/01 13:51:41 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,6 +97,7 @@ clean :
 
 fclean : clean
 	rm -f $(NAME)
+	rm -f $(BNAME)
 	rm -f $(LIBFT)
 	rm -f $(MLX)
 

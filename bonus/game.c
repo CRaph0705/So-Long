@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:02:28 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/31 10:40:39 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:53:08 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,39 +80,11 @@ void	init_window(t_game *game)
 	game->mlx_win = mlx_new_window(
 			game->mlx,
 			game->map->width * TILE_SIZE,
-			game->map->height * TILE_SIZE + 40,
+			game->map->height * TILE_SIZE,
 			"THE GAME"
 			);
 	load_textures(game);
 }
-
-/* void	render_tile(t_game *game, int x, int y)
-{
-	void	*img;
-
-	if (!game->map->floor_start[y][x])
-		img = game->floor_00;
-	else
-		img = game->map->floor_start[y][x];
-	mlx_put_image_to_window(
-		game->mlx, game->mlx_win, img, x * TILE_SIZE, y * TILE_SIZE);
-	img = NULL;
-	if (game->map->grid[y][x] == '1')
-		img = game->wall;
-	else if (game->map->floor_start[y][x] == game->exit_closed)
-	{
-		img = game->exit_closed;
-		if (game->map->collected_count == game->map->collectible_count)
-			img = game->exit_opened;
-	}
-	else if (game->map->grid[y][x] == 'C')
-		img = game->collectible;
-	else if (game->map->floor_start[y][x] == game->player)
-		img = game->player;
-	if (img)
-		mlx_put_image_to_window(
-			game->mlx, game->mlx_win, img, x * TILE_SIZE, y * TILE_SIZE);
-} */
 
 void	win_trigger(t_game *game)
 {
@@ -125,34 +97,3 @@ void	win_trigger(t_game *game)
 		return ;
 	render_tile(game, x, y);
 }
-/* 
-void	init_floor_map(t_game *game)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	game->map->floor_start = malloc(sizeof(void **) * game->map->height);
-	if (!game->map->floor_start)
-		return ;
-	while (y < game->map->height)
-	{
-		x = 0;
-		game->map->floor_start[y] = malloc(sizeof(void *) * game->map->width);
-		if (!game->map->floor_start[y])
-			return ;
-		while (x < game->map->width)
-		{
-			if (game->map->grid[y][x] == '0' || game->map->grid[y][x] == 'P'
-				|| game->map->grid[y][x] == 'C' || game->map->grid[y][x] == 'B')
-				game->map->floor_start[y][x] = get_random_floor(game);
-			else if (game->map->grid[y][x] == 'E')
-				game->map->floor_start[y][x] = game->exit_closed;
-			else
-				game->map->floor_start[y][x] = NULL;
-			x++;
-		}
-		y++;
-	}
-}
- */

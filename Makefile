@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 17:53:43 by rcochran          #+#    #+#              #
-#    Updated: 2025/03/31 10:38:14 by rcochran         ###   ########.fr        #
+#    Updated: 2025/04/01 12:06:16 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ FILES		=	display \
 				render
 
 BFILES		=	bad_guy \
+				bad_guy_utils \
 				defeat \
 				display_utils \
 				display \
@@ -57,6 +58,7 @@ BFILES		=	bad_guy \
 				map_validity_utils \
 				map_validity \
 				map \
+				moves_utils \
 				moves \
 				pathfinding \
 				render

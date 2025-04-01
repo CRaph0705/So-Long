@@ -6,39 +6,12 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 23:40:48 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/28 15:22:12 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:53:34 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-// vérifier que chemin possible de player à exit
-// vérifier que chemin possible de player à chaque collectible
-
-//• You have to check if there’s a valid path in the map.
-//• You must be able to parse any kind of map,
-// as long as it respects the above rules.
-
-// display_error(INVALID_MAP_2);
-
-// https://fr.wikipedia.org/wiki/Algorithme_de_remplissage_par_diffusion
-
-/* remplissage4(pixel, colcible, colrep) 
-début
-  si couleur(pixel) = colcible 
-  alors
-	 couleur(pixel) ← colrep
-	 remplissage4(pixel au nord, colcible, colrep)
-	 remplissage4(pixel au sud, colcible, colrep)
-	 remplissage4(pixel à l'est, colcible, colrep)
-	 remplissage4(pixel à l'ouest, colcible, colrep)
-  finsi
-fin
- */
-
-// dup map ?
-// remplir map depuis P
-// chaque C et E est atteint ? else return specific error
 int			valid_path(t_map *map);
 static	t_map	*dup_map(t_map *map);
 static	void	flood_fill(t_map *map, int x, int y);

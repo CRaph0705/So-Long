@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:15:21 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/31 10:39:49 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:18:11 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,54 +143,74 @@ typedef struct s_game
 /* PARSING */
 
 /* opens map file, return new struct or error */
-t_map	*parse_map(char *map_name);
+t_map		*parse_map(char *map_name);
 
 /* returns if map is valid */
-int		check_map_validity(t_map *map);
-int		valid_path(t_map *map);
+int			check_map_validity(t_map *map);
+int			valid_path(t_map *map);
 
 /* free map */
-void	free_map(t_map *map);
+void		free_map(t_map *map);
 
 /* ERROR HANDLING */
 
-void	display_error(char *msg);
+void		display_error(char *msg);
 
 /* DISPLAY */
 
-void	display_map_grid(t_map *map);
-void	display_map(t_map *map);
+void		display_map_grid(t_map *map);
+void		display_map(t_map *map);
 
-void	count_other_elements(t_map *map, int *other_count);
-int		is_valid_char(char c);
-int		valid_filename(char *file_name);
+void		count_other_elements(t_map *map, int *other_count);
+int			is_valid_char(char c);
+int			valid_filename(char *file_name);
 
-void	render(t_game *game);
-void	init_window(t_game *game);
-void	load_textures(t_game *game);
-void	render_tile(t_game *game, int x, int y);
+void		render(t_game *game);
+void		init_window(t_game *game);
+void		load_textures(t_game *game);
+void		render_tile(t_game *game, int x, int y);
 
-void	move_player(t_game *game, int x_input, int y_input);
-int		handle_keypress(int keycode, t_game *game);
-void	win_trigger(t_game *game);
-void	init_floor_map(t_game *game);
-void	free_l_floor_map(t_game *game, int limit);
-int		alloc_floor_map(t_game *game);
-void	fill_floor_map(t_game *game);
-void	*get_random_floor(t_game *game);
+void		move_player(t_game *game, int x_input, int y_input);
+int			handle_keypress(int keycode, t_game *game);
+void		win_trigger(t_game *game);
+void		init_floor_map(t_game *game);
+void		free_l_floor_map(t_game *game, int limit);
+int			alloc_floor_map(t_game *game);
+void		fill_floor_map(t_game *game);
+void		*get_random_floor(t_game *game);
 
-void	restore_tile(t_game *game, int x, int y);
+void		restore_tile(t_game *game, int x, int y);
 
-int		exit_game(t_game *game, int n);
+int			exit_game(t_game *game, int n);
 
-void	free_game(t_game *game);
+void		free_game(t_game *game);
 
-void	add_bad_guy(t_map *map, int y, int x);
-void	defeat_trigger(t_game *game);
-int		move_baddies(t_game *game);
-void	display_baddies(t_game *game);
-void	init_map_baddies(t_map *map);
-void	display_moves_count(t_game *game);
-void	display_hud(t_game *game);
+void		add_bad_guy(t_map *map, int y, int x);
+void		defeat_trigger(t_game *game);
+int			move_baddies(t_game *game);
+void		init_map_baddies(t_map *map);
+t_bad_guy	*new_bad_guy(int y, int x);
+void		add_bad_guy(t_map *map, int y, int x);
+void		set_bad_buy_pos(t_bad_guy *bad_guy, int x, int y);
+
+/* HUD */
+/* refresh and display HUD */
+void		display_hud(t_game *game);
+/* display move count in the HUD area. */
+void		display_moves_count(t_game *game);
+/* display collectible count in the HUD area. */
+void		display_collectible_count(t_game *game);
+/* reprint tiles under HUD area. */
+void		refresh_hud_background(t_game *game);
+
+int			is_valid_move(char next_tile);
+void		handle_next_tile(t_game *game, int new_x,
+				int new_y, char next_tile);
+
+int			is_valid_move(char next_tile);
+void		handle_next_tile(t_game *game, int new_x,
+				int new_y, char next_tile);
+void		update_player_pos(t_game *game, int new_x, int new_y);
+void		refresh_game(t_game *game, int new_x, int new_y);
 
 #endif

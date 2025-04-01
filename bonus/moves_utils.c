@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 12:04:21 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/01 12:43:36 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/01 13:01:50 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	refresh_game(t_game *game, int new_x, int new_y);
 
 int	is_valid_move(char next_tile)
 {
-	printf("\nnext tile : %c\n", next_tile);
 	if (next_tile == '1')
 		return (0);
 	return (1);
@@ -63,7 +62,6 @@ void	update_player_pos(t_game *game, int new_x, int new_y)
 
 void	refresh_game(t_game *game, int new_x, int new_y)
 {
-	printf("refresh game\n");
 	render_tile(game, new_x, new_y);
 	move_baddies(game);
 	display_hud(game);

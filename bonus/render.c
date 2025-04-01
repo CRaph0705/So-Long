@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:31:05 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/01 12:47:20 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/01 13:02:19 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void	*get_tile_img(t_game *game, int x, int y)
 		return (game->exit_closed);
 	}
 	else if (game->map->grid[y][x] == 'P')
-		return (printf("player"), game->player);
+		return (game->player);
 	else if (game->map->grid[y][x] == 'C')
 		return (game->collectible);
 	else if (game->map->grid[y][x] == 'B')
-		return (printf("bad_guy"), game->bad_guy);
+		return (game->bad_guy);
 	return (NULL);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:11:15 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/28 17:31:02 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:59:25 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,7 @@ void	free_map(t_map *map)
 		i++;
 	}
 	free(map->grid);
+	if (map->baddies)
+		free_baddies(map);
 	free(map);
 }

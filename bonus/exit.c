@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:58:43 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/31 09:05:51 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:59:03 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	free_game(t_game *game)
 	destroy_game_mlx(game);
 	if (game->map)
 		free_map(game->map);
-	if (game->map->baddies)
-		free_baddies(game->map);
 	ft_printf("free map OK ✅\n");
 	free(game);
 	ft_printf("free game OK ✅\n");
@@ -96,4 +94,5 @@ void	free_baddies(t_map *map)
 		current = next;
 	}
 	map->baddies = NULL;
+	ft_printf("free baddies OK ✅\n");
 }

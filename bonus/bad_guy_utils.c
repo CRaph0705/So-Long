@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 11:25:01 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/01 11:26:42 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:57:04 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	add_bad_guy(t_map *map, int y, int x)
 	new = new_bad_guy(y, x);
 	if (!new)
 		return ;
-	printf("Ajout d'un bad guy en (%d, %d)\n", x, y);
 	if (!map->baddies)
 	{
 		map->baddies = new;

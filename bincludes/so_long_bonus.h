@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:15:21 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/01 12:18:11 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/01 13:00:04 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,5 +212,6 @@ void		handle_next_tile(t_game *game, int new_x,
 				int new_y, char next_tile);
 void		update_player_pos(t_game *game, int new_x, int new_y);
 void		refresh_game(t_game *game, int new_x, int new_y);
+void		free_baddies(t_map *map);
 
 #endif

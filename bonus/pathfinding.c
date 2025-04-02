@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 23:40:48 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/01 12:53:34 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/02 13:35:06 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static t_map	*dup_map(t_map *map)
 	new_map->grid[i] = NULL;
 	new_map->height = map_h;
 	new_map->width = map->width;
+	new_map->baddies = map->baddies;
 	return (new_map);
 }
 

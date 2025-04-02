@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/31 10:29:07 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/02 12:49:30 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,31 @@
 
 # ifdef __APPLE__
 #  include "../mlx_macos/mlx.h"
+#  define ESC_KEY 53
+#  define KEY_W 13
+#  define KEY_A 0
+#  define KEY_S 1
+#  define KEY_D 2
+#  define KEY_UP 126
+#  define KEY_LEFT 123
+#  define KEY_DOWN 125
+#  define KEY_RIGHT 124
+#  define KEY_Z 6
+#  define KEY_Q 12
+
 # else
 #  include "../mlx_linux/mlx.h"
+#  define ESC_KEY 65307
+#  define KEY_W 119
+#  define KEY_A 97
+#  define KEY_S 115
+#  define KEY_D 100
+#  define KEY_UP 65362
+#  define KEY_LEFT 65361
+#  define KEY_DOWN 65364
+#  define KEY_RIGHT 65363
+#  define KEY_Z 122
+#  define KEY_Q 113
 # endif
 
 # define PARSE_ERROR_1 "parse_map() : Error opening file.\n"
@@ -36,17 +59,6 @@
 # define TILE_SIZE 32
 # define GAME_ERROR_1 "Malloc error \n"
 
-# define ESC_KEY 53
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_UP 126
-# define KEY_LEFT 123
-# define KEY_DOWN 125
-# define KEY_RIGHT 124
-# define KEY_Z 6
-# define KEY_Q 12
 /* 	
 {
 	char	**grid;

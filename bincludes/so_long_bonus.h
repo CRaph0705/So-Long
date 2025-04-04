@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:15:21 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/02 13:42:07 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/04 16:23:57 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define PARSE_ERROR_1 "parse_map() : Error opening file.\n"
 # define PARSE_ERROR_2 "parse_map() : Error on t_map malloc.\n"
 # define PARSE_ERROR_3 "parse_map() : Invalid map.\n"
+# define PARSE_ERROR_4 "parse_map() : Error on map->grid malloc.\n"
 # define INVALID_BORDERS "Error: Map must be surrounded by walls.\n"
 # define INVALID_ELEM_1 "Error: Invalid number of P, E, or C.\n"
 # define INVALID_ELEM_2 "Error: Invalid char found.\n"

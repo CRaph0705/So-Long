@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:23:37 by rcochran          #+#    #+#             */
-/*   Updated: 2024/11/20 18:08:30 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/04 19:10:02 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	{
 		while (i > 0)
 		{
+			((char *)dest)[i - 1] = ((char *)src)[i -1];
 			i--;
-			((char *)dest)[i] = ((char *)src)[i];
 		}
 		return (dest);
 	}

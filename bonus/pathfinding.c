@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 23:40:48 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/02 13:35:06 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/04 19:42:52 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,13 @@ static t_map	*dup_map(t_map *map)
 	if (!new_map)
 		return (display_error(INVALID_MAP_3), NULL);
 	i = 0;
-	new_map->grid = ft_calloc(map_h, sizeof(char *) + 1);
-	while (map->grid[i])
+	new_map->grid = ft_calloc(map_h + 1, sizeof(char *));
+	while (i < map_h)
 	{
-		new_map->grid[i] = strdup(map->grid[i]);
+		new_map->grid[i] = ft_strdup(map->grid[i]);
 		i++;
 	}
 	new_map->collectible_count = 0;
-	new_map->grid[i] = NULL;
 	new_map->height = map_h;
 	new_map->width = map->width;
 	new_map->baddies = map->baddies;
@@ -48,6 +47,7 @@ int	valid_path(t_map *src_map)
 	int		valid;
 
 	valid = 1;
+	tmp_map = NULL;
 	if (!src_map)
 		return (display_error(INVALID_MAP_4), 0);
 	tmp_map = dup_map(src_map);

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:11:15 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/04 21:02:47 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/07 10:51:58 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ t_map	*parse_map(char *map_name)
 	if (!new_map)
 		return (display_error(PARSE_ERROR_2), NULL);
 	new_map->grid = NULL;
-	// new_map->grid = ft_realloc(new_map->grid,
-	// 		sizeof(char *) * (new_map->height + 1));
-	// if (!new_map->grid)
-		// return (display_error(PARSE_ERROR_4), NULL);
 	new_map->height = get_map_h(map_name);
 	if (new_map->height == -1)
 		return (display_error(PARSE_ERROR_1), NULL);
@@ -43,7 +39,7 @@ t_map	*parse_map(char *map_name)
 	new_map->baddies = NULL;
 	fill_map(new_map, fd);
 	if (check_map_validity(new_map) == 0)
-		return (display_error(PARSE_ERROR_3), NULL);
+		return (display_error(PARSE_ERROR_3), free_map(new_map), NULL);
 	return (new_map);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/02 12:49:30 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:06:47 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@
 # define INVALID_FILE "Error : Invalid file extension.\n"
 # define TILE_SIZE 32
 # define GAME_ERROR_1 "Malloc error \n"
-
+# define INVALID_MAP_5 "Error: map too large."
+# define MAX_MAP_WIDTH 40
+# define MAX_MAP_HEIGHT 25
 /* 	
 {
 	char	**grid;
@@ -130,6 +132,7 @@ typedef struct s_game
 	void	*floor_02;
 	void	*floor_03;
 	void	*player;
+	void	*hero_on_exit;
 	void	*exit_opened;
 	void	*exit_closed;
 	void	*collectible;
@@ -181,4 +184,14 @@ void	restore_tile(t_game *game, int x, int y);
 int		exit_game(t_game *game, int n);
 
 void	free_game(t_game *game);
+int		is_map_too_big(int map_width, int map_height);
+void	load_props_textures(t_game *game);
+void	load_ground_textures(t_game *game);
+void	*get_tile_image(t_game *game, int x, int y);
+void	*get_wall_or_obstacle_img(t_game *game, int x, int y);
+void	*get_player_img(t_game *game);
+void	update_player_pos(t_game *game, int new_x, int new_y);
+void	handle_next_tile(t_game *game, int new_x,
+			int new_y, char next_tile);
+
 #endif

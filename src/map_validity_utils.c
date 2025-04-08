@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:12:40 by rcochran          #+#    #+#             */
-/*   Updated: 2025/03/31 09:02:01 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:52:02 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,14 @@ int	valid_filename(char *file_name)
 {
 	file_name = file_name + (ft_strlen(file_name) - 4);
 	return (ft_strncmp(file_name, ".ber", 4) == 0);
+}
+
+int	is_map_too_big(int map_width, int map_height)
+{
+	if (map_width > MAX_MAP_WIDTH || map_height > MAX_MAP_HEIGHT)
+	{
+		ft_printf(INVALID_MAP_5, MAX_MAP_WIDTH, MAX_MAP_HEIGHT);
+		return (1);
+	}
+	return (0);
 }

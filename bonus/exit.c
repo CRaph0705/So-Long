@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:58:43 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/07 10:07:56 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:29:58 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,8 @@ void	destroy_game_textures(t_game *game)
 {
 	if (!game)
 		return ;
-	if (game->wall)
-		mlx_destroy_image(game->mlx, game->wall);
-	if (game->floor_00)
-		mlx_destroy_image(game->mlx, game->floor_00);
-	if (game->floor_01)
-		mlx_destroy_image(game->mlx, game->floor_01);
-	if (game->floor_02)
-		mlx_destroy_image(game->mlx, game->floor_02);
-	if (game->floor_03)
-		mlx_destroy_image(game->mlx, game->floor_03);
-	if (game->player)
-		mlx_destroy_image(game->mlx, game->player);
-	if (game->collectible)
-		mlx_destroy_image(game->mlx, game->collectible);
-	if (game->exit_opened)
-		mlx_destroy_image(game->mlx, game->exit_opened);
-	if (game->exit_closed)
-		mlx_destroy_image(game->mlx, game->exit_closed);
-	if (game->obstacle)
-		mlx_destroy_image(game->mlx, game->obstacle);
-	if (game->bad_guy)
-		mlx_destroy_image(game->mlx, game->bad_guy);
+	destroy_props_textures(game);
+	destroy_ground_textures(game);
 }
 
 void	destroy_game_mlx(t_game *game)

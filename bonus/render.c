@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:31:05 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/04 18:14:04 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:40:58 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,7 @@ void	*get_tile_img(t_game *game, int x, int y)
 	if (!game || !game->map || !game->map->grid)
 		return (NULL);
 	if (game->map->grid[y][x] == '1')
-	{
-		if (y == 0 || y == game->map->height - 1
-			|| x == 0 || x == game->map->width - 1)
-			return (game->wall);
-		return (game->obstacle);
-	}
+		return (get_wall_or_obstacle_img(game, x, y));
 	else if (game->map->grid[y][x] == 'E')
 	{
 		if (game->map->collected_count && game->map->collectible_count
@@ -65,7 +60,7 @@ void	*get_tile_img(t_game *game, int x, int y)
 		return (game->exit_closed);
 	}
 	else if (game->map->grid[y][x] == 'P')
-		return (game->player);
+		return (get_player_img(game));
 	else if (game->map->grid[y][x] == 'C')
 		return (game->collectible);
 	else if (game->map->grid[y][x] == 'B')

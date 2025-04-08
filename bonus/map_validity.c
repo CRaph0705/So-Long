@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 20:14:59 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/04 19:45:26 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:46:18 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	check_map_validity(t_map *map)
 		return (0);
 	if (!map_is_rectangular(map) || !valid_borders(map)
 		|| !valid_elements(map))
+		return (0);
+	if (is_map_too_big(map->width, map->height))
 		return (0);
 	if (!valid_path(map))
 		return (0);

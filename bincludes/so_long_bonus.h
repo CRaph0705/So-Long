@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:15:21 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/04 16:23:57 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:48:30 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@
 # define GAME_ERROR_1 "game malloc error \n"
 
 # define TILE_SIZE 32
+# define INVALID_MAP_5 "Error: map too large."
+# define MAX_MAP_WIDTH 40
+# define MAX_MAP_HEIGHT 25
 
 /* {
 	int	pos_x;
@@ -149,6 +152,7 @@ typedef struct s_game
 	void	*exit_closed;
 	void	*collectible;
 	void	*bad_guy;
+	void	*hero_on_exit;
 	int		moves_count;
 	t_map	*map;
 }	t_game;
@@ -226,5 +230,12 @@ void		handle_next_tile(t_game *game, int new_x,
 void		update_player_pos(t_game *game, int new_x, int new_y);
 void		refresh_game(t_game *game, int new_x, int new_y);
 void		free_baddies(t_map *map);
+int			is_map_too_big(int map_width, int map_height);
+void		load_props_textures(t_game *game);
+void		load_ground_textures(t_game *game);
+void		destroy_props_textures(t_game *game);
+void		destroy_ground_textures(t_game *game);
+void		*get_wall_or_obstacle_img(t_game *game, int x, int y);
+void		*get_player_img(t_game *game);
 
 #endif

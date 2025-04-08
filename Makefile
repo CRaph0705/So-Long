@@ -6,7 +6,7 @@
 #    By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 17:53:43 by rcochran          #+#    #+#              #
-#    Updated: 2025/04/04 20:13:30 by rcochran         ###   ########.fr        #
+#    Updated: 2025/04/08 17:08:22 by rcochran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,12 +38,15 @@ FILES		=	display \
 				error \
 				exit \
 				floor_map \
+				game_textures \
 				game \
 				map_validity_utils \
 				map_validity \
 				map \
+				moves_utils \
 				moves \
 				pathfinding \
+				render_utils \
 				render
 
 BFILES		=	bad_guy \
@@ -52,8 +55,10 @@ BFILES		=	bad_guy \
 				display_utils \
 				display \
 				error \
+				exit_utils \
 				exit \
 				floor_map \
+				game_textures \
 				game \
 				map_validity_utils \
 				map_validity \
@@ -61,6 +66,7 @@ BFILES		=	bad_guy \
 				moves_utils \
 				moves \
 				pathfinding \
+				render_utils \
 				render
 
 

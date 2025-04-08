@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:58:43 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/07 10:37:11 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:48:19 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	destroy_game_textures(t_game *game)
 		mlx_destroy_image(game->mlx, game->exit_closed);
 	if (game->obstacle)
 		mlx_destroy_image(game->mlx, game->obstacle);
+	if (game->hero_on_exit)
+		mlx_destroy_image(game->mlx, game->hero_on_exit);
 }
 
 void	destroy_game_mlx(t_game *game)

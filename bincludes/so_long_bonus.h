@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:15:21 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/08 14:48:30 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:37:38 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@
 
 # define TILE_SIZE 32
 # define INVALID_MAP_5 "Error: map too large."
-# define MAX_MAP_WIDTH 40
-# define MAX_MAP_HEIGHT 25
+# define MAX_MAP_WIDTH 42
+# define MAX_MAP_HEIGHT 30
 
 /* {
 	int	pos_x;

@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:11:15 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/07 10:52:41 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:46:02 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ t_map	*parse_map(char *map_name)
 	int		fd;
 
 	new_map = NULL;
-	if (valid_filename(map_name) == 0)
-		return (display_error(INVALID_FILE), NULL);
 	new_map = malloc(sizeof(t_map));
 	if (!new_map)
 		return (display_error(PARSE_ERROR_2), NULL);
+	if (valid_filename(map_name) == 0)
+		return (display_error(INVALID_FILE), free_map(new_map), NULL);
 	new_map->grid = NULL;
 	new_map->height = get_map_h(map_name);
 	if (new_map->height == -1)
-		return (display_error(PARSE_ERROR_1), NULL);
+		return (display_error(PARSE_ERROR_1), free_map(new_map), NULL);
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
-		return (display_error(PARSE_ERROR_1), NULL);
+		return (display_error(PARSE_ERROR_1), free_map(new_map), NULL);
 	fill_map(new_map, fd);
 	if (check_map_validity(new_map) == 0)
 		return (display_error(PARSE_ERROR_3), free_map(new_map), NULL);

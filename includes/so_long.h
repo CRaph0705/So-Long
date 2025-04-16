@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:51:20 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/08 17:06:47 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:39:10 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@
 # define TILE_SIZE 32
 # define GAME_ERROR_1 "Malloc error \n"
 # define INVALID_MAP_5 "Error: map too large."
-# define MAX_MAP_WIDTH 40
-# define MAX_MAP_HEIGHT 25
+# define MAX_MAP_WIDTH 42
+# define MAX_MAP_HEIGHT 30
 /* 	
 {
 	char	**grid;

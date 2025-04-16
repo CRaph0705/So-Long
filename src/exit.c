@@ -6,7 +6,7 @@
 /*   By: rcochran <rcochran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:58:43 by rcochran          #+#    #+#             */
-/*   Updated: 2025/04/07 18:48:19 by rcochran         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:23:02 by rcochran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,8 @@ void	free_game(t_game *game)
 	free(game->map->floor_start);
 	if (game->map)
 		free_map(game->map);
-	ft_printf("free map OK ✅\n");
 	free(game);
-	ft_printf("free game OK ✅\n");
+	ft_printf("exit game OK ✅\n");
 }
 
 void	destroy_game_textures(t_game *game)
